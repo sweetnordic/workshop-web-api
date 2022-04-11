@@ -185,6 +185,5 @@ Die Delete Operation ist ebenfalls nichts besonderes.
     }
 ```
 
-
 [Zurück zur Übersicht](README.md)
 [Weiter zu Abschnitt 3 - ASP.NET Core Web API mit Anuglar.js SPA](abschnitt-3.md)
