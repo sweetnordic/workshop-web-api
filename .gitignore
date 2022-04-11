@@ -3,3 +3,4 @@
 **/dist
 **/publish
 **/node_modules
+**/.vs
