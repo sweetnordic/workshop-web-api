@@ -1,5 +1,5 @@
-@description('Name des App Service')
-@minLength(4)
+@description('Dein Kürzel - 3-4 Zeichen')
+@minLength(3)
 @maxLength(4)
 param Name string = ''
 
@@ -8,10 +8,8 @@ param location string = resourceGroup().location
 
 @description('Describes plan\'s pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/')
 @allowed([
-  'F1'
   'B1'
   'S1'
-  'P1'
 ])
 param sku string = 'B1'
 
@@ -25,11 +23,6 @@ resource asp 'Microsoft.Web/serverfarms@2021-03-01' = {
   sku: {
     name: sku
     capacity: 1
-    skuCapacity: {
-      default: 1
-      minimum: 1
-      maximum: 1
-    }
   }
 }
 
@@ -44,7 +37,7 @@ resource webAppAsp 'Microsoft.Web/sites@2021-03-01' = {
       minTlsVersion: '1.2'
       scmMinTlsVersion: '1.2'
       http20Enabled: true
-      webSocketsEnabled: true 
+      webSocketsEnabled: true
       remoteDebuggingEnabled: false
       ftpsState: 'Disabled'
     }
@@ -64,7 +57,7 @@ resource webAppNode 'Microsoft.Web/sites@2021-03-01' = {
       minTlsVersion: '1.2'
       scmMinTlsVersion: '1.2'
       http20Enabled: true
-      webSocketsEnabled: true 
+      webSocketsEnabled: true
       remoteDebuggingEnabled: false
       ftpsState: 'Disabled'
       appSettings: [
