@@ -198,6 +198,28 @@ Bei der Delete (cruD - DELETE) Operation, überprüfen wir ebenfalls im Store ob
 
 > Alternativ zum Swagger Playground kann auch der Postman genutzt werden.
 
+Damit der Swagger Playground auch außerhalb der Entwicklung funktioniert müssen wir die `Startup.cs` bearbeiten.
+
+```c#
+            if (env.IsDevelopment()) {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Workshop.WebApi v1"));
+            }
+            app.UseHttpsRedirection();
+```
+
+Die Aufrufe UseSwagger() und UseSwaggerUI() müssen aus dem If-Block unter dem Aufruf UseHttpsRedirection().
+
+```c#
+            if (env.IsDevelopment()) {
+                app.UseDeveloperExceptionPage();
+            }
+            app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Workshop.WebApi v1"));
+```
+
 ## Anwendung bauen & bereitstellen
 
 Anwendung bauen

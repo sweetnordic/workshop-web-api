@@ -1,0 +1,101 @@
+
+pool:
+  name: Azure Pipelines
+
+variables:
+  AzureSubscription: 'Service-Principal_AZ4DB_pipeline-AU'
+  BuildConfiguration: 'Release'
+  WebAppName: 'shem-aspapi-ue2546imlz23k'
+  WebAppRG: 'az4db-wissenstransfer'
+  Project: '**/*.csproj'
+
+stages:
+- stage: Build
+  displayName: "Build"
+  jobs:
+  - job: Build
+    displayName: "Build"
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: Restore
+      inputs:
+        command: restore
+        projects: '$(Project)'
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        projects: '$(Project)'
+        arguments: '--configuration $(BuildConfiguration)'
+    - task: DotNetCoreCLI@2
+      displayName: Publish
+      inputs:
+        command: publish
+        publishWebProjects: True
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+        # zipAfterPublish: True
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Pipeline'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'api'
+        publishLocation: 'pipeline'
+      condition: succeededOrFailed()
+- stage: Release
+  displayName: "Release"
+  jobs:
+  - job: Release
+    displayName: "Release"
+    steps:
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifact: api
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: '$(AzureSubscription)'
+        appType: 'webApp'
+        appName: '$(WebAppName)'
+        deployToSlotOrASE: true
+        resourceGroupName: '$(WebAppRG)'
+        slotName: 'swap'
+        package: '$(Pipeline.Workspace)/*.zip'
+        # package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        deploymentMethod: 'auto' # runFromPackage, auto
+    - task: AzureAppServiceManage@0
+      displayName: 'Start Swap Slot'
+      inputs:
+        azureSubscription: '$(AzureSubscription)'
+        Action: 'Start Azure App Service'
+        WebAppName: '$(WebAppName)'
+        SpecifySlotOrASE: true
+        ResourceGroupName: '$(WebAppRG)'
+        Slot: swap
+    - task: AzureAppServiceManage@0
+      displayName: 'Swap Slots'
+      inputs:
+        azureSubscription: '$(AzureSubscription)'
+        WebAppName: '$(WebAppName)'
+        ResourceGroupName: '$(WebAppRG)'
+        SourceSlot: swap
+    - task: AzureAppServiceManage@0
+      displayName: 'Stop Swap Slot'
+      inputs:
+        azureSubscription: '$(AzureSubscription)'
+        Action: 'Stop Azure App Service'
+        WebAppName: '$(WebAppName)'
+        SpecifySlotOrASE: true
+        ResourceGroupName: '$(WebAppRG)'
+        Slot: swap
+    # - task: AzureRmWebAppDeployment@4
+    #   displayName: 'Deploy Azure App Service'
+    #   inputs:
+    #     azureSubscription: '$(AzureSubscription)'
+    #     appType: '$(webApp)'
+    #     WebAppName: '$(WebAppName)'
+    #     deployToSlotOrASE: true
+    #     ResourceGroupName: '$(WebAppRG)'
+    #     SlotName: swap
+    #     packageForLinux: '$(System.DefaultWorkingDirectory)/asa/drop/SpatialAnchorInformationServer.zip'
+    #     enableCustomDeployment: true
+    #     TakeAppOfflineFlag: false
+    #     RemoveAdditionalFilesFlag: true
+    #     ExcludeFilesFromAppDataFlag: false

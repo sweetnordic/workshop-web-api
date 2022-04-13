@@ -5,10 +5,10 @@ Ein Workshop über Grundlagen für Web / HTTP APIs vom Code zum App Service, als
 Drei Abschnitte:
 
 - Web API
-  - [Web API mit ASP.NET Core](#aspnet-web-api-c)
+  - [Web API mit ASP.NET Core](#asp-net-web-api-c)
   - [Web API mit Node.js und Nest.js](#nodejs-mit-nestjs-web-api-typescript)
 - Web App
-  - [Web App mit ASP.NET Core und Angular.js](#aspnet-web-api--angularjs-web-spa)
+  - [Web App mit ASP.NET Core und Angular.js](#asp-net-web-api--angularjs-web-spa)
 
 ## Voraussetzungen
 
