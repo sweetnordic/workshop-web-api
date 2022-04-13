@@ -1,4 +1,4 @@
-@description('Dein Kürzel - 3-4 Zeichen')
+@description('Dein Kuerzel - 3-4 Zeichen')
 @minLength(3)
 @maxLength(4)
 param Name string
