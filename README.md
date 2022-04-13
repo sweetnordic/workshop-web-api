@@ -26,11 +26,7 @@ Drei Abschnitte:
 
 ```powershell
 $Name = "<Kürzel(3-4 Zeichen)>"
-New-AzResourceGroupDeployment -ResourceGroupName "az4db-wissenstransfer" -TemplateUri "https://raw.githubusercontent.com/sweetnordic/workshop-web-api/main/.azure/azuredeploy.json" -DeploymentName "ws-$(Name)-api" -Parameters @{
-    "parameters" = @{
-        "Name" = @{ "value" = $Name }
-    }
-}
+New-AzResourceGroupDeployment -ResourceGroupName "az4db-wissenstransfer" -TemplateUri "https://raw.githubusercontent.com/sweetnordic/workshop-web-api/main/.azure/azuredeploy.json" -DeploymentName "ws-$($Name)-api" -TemplateParameterObject @{ "Name" = $Name }
 ```
 
 ## Grundlagen

@@ -78,6 +78,7 @@ resource slotAsp 'Microsoft.Web/sites/slots@2021-03-01' = {
       sourceWebAppId: webAppAsp.id
       sourceWebAppLocation: Location
     }
+    serverFarmId: asp.id
   }
 }
 
@@ -89,5 +90,6 @@ resource slotNode 'Microsoft.Web/sites/slots@2021-03-01' = {
       sourceWebAppId: webAppNode.id
       sourceWebAppLocation: Location
     }
+    serverFarmId: asp.id
   }
 }
