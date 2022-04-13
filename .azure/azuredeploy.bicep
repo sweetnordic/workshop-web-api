@@ -1,6 +1,6 @@
 @description('Dein Kuerzel - 3-4 Zeichen')
 @minLength(3)
-@maxLength(4)
+@maxLength(5)
 param Name string
 
 @description('Describes plan\'s pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/')
@@ -10,7 +10,10 @@ param Name string
 ])
 param sku string = 'S1'
 
-var Location = resourceGroup().location
+@description('Region / Location for the resources')
+param Location string = resourceGroup().location
+
+// var Location = resourceGroup().location
 var aspName = '${toLower(Name)}-asp'
 var webAppAspName = '${toLower(Name)}-aspapi-${uniqueString(resourceGroup().id)}'
 var webAppNodeName = '${toLower(Name)}-nodeapi-${uniqueString(resourceGroup().id)}'
