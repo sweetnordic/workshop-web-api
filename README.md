@@ -22,15 +22,25 @@ Drei Abschnitte:
 [![Deploy To Azure](https://raw.githubusercontent.com/sweetnordic/workshop-web-api/main/.azure/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsweetnordic%2Fworkshop-web-api%2Fmain%2F.azure%2Fazuredeploy.json)
 [![Visualize](https://raw.githubusercontent.com/sweetnordic/workshop-web-api/main/.azure/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fsweetnordic%2Fworkshop-web-api%2Fmain%2F.azure%2Fazuredeploy.json)
 
+> Alternatives Deployment
+
+```powershell
+$Name = "<Kürzel(3-4 Zeichen)>"
+New-AzResourceGroupDeployment -ResourceGroupName "az4db-wissenstransfer" -TemplateUri "https://raw.githubusercontent.com/sweetnordic/workshop-web-api/main/.azure/azuredeploy.json" -DeploymentName "ws-$(Name)-api" -Parameters @{
+    "parameters" = @{
+        "Name" = @{ "value" = $Name }
+    }
+}
+```
+
 ## Grundlagen
 
 Im Bereich der Web APIs wird unterschieden in zwei Bereichen, HTTP und REST. HTTP API ist die Grundlagen und die RESTful API sollte das Ziel sein. Zu dem Thema RESTful APIs gibt es viel zu lesen unter anderem hat Microsoft ein [RESTful API Design Guide](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design) und [RESTful API Guidelines](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
 
 Weitere Informationen zu RESTful APIs:
 
-[RedHat - Was ist eine REST-API](https://www.redhat.com/de/topics/api/what-is-a-rest-api)
-
-[IBM - What is a REST API](https://www.ibm.com/cloud/learn/rest-apis)
+- [RedHat - Was ist eine REST-API](https://www.redhat.com/de/topics/api/what-is-a-rest-api)
+- [IBM - What is a REST API](https://www.ibm.com/cloud/learn/rest-apis)
 
 Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumentieren anhand der [OpenAPI Specification](https://swagger.io/specification/). Dies ist eine spezielle Form geschrieben in JSON oder YAML und kann unter anderem von [Swagger](https://swagger.io/) weiter verwendet werden.
 
