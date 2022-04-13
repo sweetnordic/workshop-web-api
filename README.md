@@ -27,7 +27,9 @@ Drei Abschnitte:
 Im Bereich der Web APIs wird unterschieden in zwei Bereichen, HTTP und REST. HTTP API ist die Grundlagen und die RESTful API sollte das Ziel sein. Zu dem Thema RESTful APIs gibt es viel zu lesen unter anderem hat Microsoft ein [RESTful API Design Guide](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design) und [RESTful API Guidelines](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
 
 Weitere Informationen zu RESTful APIs:
+
 [RedHat - Was ist eine REST-API](https://www.redhat.com/de/topics/api/what-is-a-rest-api)
+
 [IBM - What is a REST API](https://www.ibm.com/cloud/learn/rest-apis)
 
 Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumentieren anhand der [OpenAPI Specification](https://swagger.io/specification/). Dies ist eine spezielle Form geschrieben in JSON oder YAML und kann unter anderem von [Swagger](https://swagger.io/) weiter verwendet werden.

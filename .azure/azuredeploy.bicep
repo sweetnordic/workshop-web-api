@@ -8,12 +8,12 @@ param Name string
   'B1'
   'S1'
 ])
-param sku string = 'B1'
+param sku string = 'S1'
 
 var Location = resourceGroup().location
 var aspName = '${toLower(Name)}-asp'
-var webAppNodeName = '${toLower(Name)}-api-${uniqueString(resourceGroup().id)}'
-var webAppAspName = '${toLower(Name)}-api-${uniqueString(resourceGroup().id)}'
+var webAppAspName = '${toLower(Name)}-aspapi-${uniqueString(resourceGroup().id)}'
+var webAppNodeName = '${toLower(Name)}-nodeapi-${uniqueString(resourceGroup().id)}'
 
 resource asp 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: aspName
