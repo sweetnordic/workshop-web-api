@@ -32,6 +32,7 @@ resource webAppAsp 'Microsoft.Web/sites@2021-03-01' = {
   }
   properties: {
     siteConfig: {
+      netFrameworkVersion: 'v5.0'
       minTlsVersion: '1.2'
       scmMinTlsVersion: '1.2'
       http20Enabled: true
