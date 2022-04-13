@@ -1,10 +1,7 @@
 @description('Dein Kürzel - 3-4 Zeichen')
 @minLength(3)
 @maxLength(4)
-param Name string = ''
-
-@description('Region der Ressourcen')
-param location string = resourceGroup().location
+param Name string
 
 @description('Describes plan\'s pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/')
 @allowed([
@@ -13,13 +10,14 @@ param location string = resourceGroup().location
 ])
 param sku string = 'B1'
 
+var Location = resourceGroup().location
 var aspName = '${toLower(Name)}-asp'
 var webAppNodeName = '${toLower(Name)}-api-${uniqueString(resourceGroup().id)}'
 var webAppAspName = '${toLower(Name)}-api-${uniqueString(resourceGroup().id)}'
 
 resource asp 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: aspName
-  location: location
+  location: Location
   sku: {
     name: sku
     capacity: 1
@@ -28,7 +26,7 @@ resource asp 'Microsoft.Web/serverfarms@2021-03-01' = {
 
 resource webAppAsp 'Microsoft.Web/sites@2021-03-01' = {
   name: webAppAspName
-  location: location
+  location: Location
   identity: {
     type: 'SystemAssigned'
   }
@@ -48,7 +46,7 @@ resource webAppAsp 'Microsoft.Web/sites@2021-03-01' = {
 
 resource webAppNode 'Microsoft.Web/sites@2021-03-01' = {
   name: webAppNodeName
-  location: location
+  location: Location
   identity: {
     type: 'SystemAssigned'
   }
@@ -74,22 +72,22 @@ resource webAppNode 'Microsoft.Web/sites@2021-03-01' = {
 
 resource slotAsp 'Microsoft.Web/sites/slots@2021-03-01' = {
   name: '${webAppAspName}/swap'
-  location: location
+  location: Location
   properties: {
     cloningInfo: {
       sourceWebAppId: webAppAsp.id
-      sourceWebAppLocation: location
+      sourceWebAppLocation: Location
     }
   }
 }
 
 resource slotNode 'Microsoft.Web/sites/slots@2021-03-01' = {
   name: '${webAppNodeName}/swap'
-  location: location
+  location: Location
   properties: {
     cloningInfo: {
       sourceWebAppId: webAppNode.id
-      sourceWebAppLocation: location
+      sourceWebAppLocation: Location
     }
   }
 }

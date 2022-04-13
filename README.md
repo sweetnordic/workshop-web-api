@@ -42,4 +42,4 @@ Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumen
 
 ## ASP .NET Web API + Angular.js Web SPA
 
-[Zur Abschnittsdokumentation](abschnitt-2.md)
+[Zur Abschnittsdokumentation](abschnitt-3.md)
