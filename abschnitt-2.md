@@ -1,5 +1,5 @@
 
-# Node.js mit Nestjs Web API `TypeScript`
+# Node.js mit Nest.js Web API `TypeScript`
 
 ## Projekt erstellen
 

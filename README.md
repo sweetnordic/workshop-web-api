@@ -1,19 +1,21 @@
-# Workshop Web API Grundlage
+# Workshop Web API Grundlagen
 
-Ein Workshop über Grundlagen für Web APIs vom Code zum App Service als extra gibt es noch einen Teil für eine Web API welche eine Angular SPA bedient.
+Ein Workshop über Grundlagen für Web / HTTP APIs vom Code zum App Service, als extra gibt es noch einen Teil für eine Web API welche eine Angular SPA bedient.
 
 Drei Abschnitte:
+
 - Web API
-  1. [Web API mit ASP.NET Core](#aspnet-web-api-c)
-  2. [Web API mit Node.js und Nestjs](#nodejs-mit-nestjs-web-api-typescript)
+  - [Web API mit ASP.NET Core](#aspnet-web-api-c)
+  - [Web API mit Node.js und Nest.js](#nodejs-mit-nestjs-web-api-typescript)
 - Web App
-  3. [Web App mit ASP.NET Core und Angular.js](#aspnet-web-api--angularjs-web-spa)
+  - [Web App mit ASP.NET Core und Angular.js](#aspnet-web-api--angularjs-web-spa)
 
 ## Voraussetzungen
 
 - `choco install dotnet-5.0-sdk`
 - `choco install nodejs-lts`
 - `npm install -g @nestjs/cli`
+- `npm install -g @angular/cli`
 
 ### Azure Infrastruktur
 
@@ -22,26 +24,22 @@ Drei Abschnitte:
 
 ## Grundlagen
 
+Im Bereich der Web APIs wird unterschieden in zwei Bereichen, HTTP und REST. HTTP API ist die Grundlagen und die RESTful API sollte das Ziel sein. Zu dem Thema RESTful APIs gibt es viel zu lesen unter anderem hat Microsoft ein [RESTful API Design Guide](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design) und [RESTful API Guidelines](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
 
+Weitere Informationen zu RESTful APIs:
+[RedHat - Was ist eine REST-API](https://www.redhat.com/de/topics/api/what-is-a-rest-api)
+[IBM - What is a REST API](https://www.ibm.com/cloud/learn/rest-apis)
 
-## ASP.NET Web API [C#]
+Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumentieren anhand der [OpenAPI Specification](https://swagger.io/specification/). Dies ist eine spezielle Form geschrieben in JSON oder YAML und kann unter anderem von [Swagger](https://swagger.io/) weiter verwendet werden.
 
-`dotnet new webapi --name Workshop.WebApi --output Workshop.WebApi --language C# --framework net5.0`
-https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new-sdk-templates
+## ASP .NET Web API `C#`
 
-## Node.js mit Nestjs Web API [TypeScript]
+[Zur Abschnittsdokumentation](abschnitt-1.md)
 
-`nest new WorkshopNodeApi --skip-git --package-manager npm --language TS`
-https://docs.nestjs.com/
+## Node.js mit Nest.js Web API `TypeScript`
 
-`nest build --tsc`
+[Zur Abschnittsdokumentation](abschnitt-2.md)
 
-`nest start --tsc --watch`
+## ASP .NET Web API + Angular.js Web SPA
 
-`https://docs.nestjs.com/recipes/prisma`
-
-## ASP.NET Web API + Angular.js Web SPA
-
-`dotnet new angular --name Workshop.WebApp --output Workshop.WebApp --language C# --framework net5.0`
-
-https://angular.io/
+[Zur Abschnittsdokumentation](abschnitt-2.md)

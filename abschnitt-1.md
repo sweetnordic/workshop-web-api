@@ -9,6 +9,7 @@ In der Vorlage wird eine ASP.NET Web API Anwendung erzeugt, welche einen Wetter 
 Dieser Endpunkt nimmer aus einer definierten Liste von Wetterereignissen mehrere Zufällige Werte als Antwort sowie zufällige Temperaturen für die kommenden Tage.
 
 Themen sichtbar in der Vorlage:
+
 - Data Transfer Object (DTO)
 - Computed Properties
 - OpenApi Specification (Swagger)
@@ -19,7 +20,6 @@ Themen sichtbar in der Vorlage:
 `dotnet new webapi --name Workshop.WebApi --output Workshop.WebApi --language C# --framework net5.0`
 
 [Weitere Informationen zu .NET Vorlagen](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new-sdk-templates)
-
 
 Projekt local starten mit watch
 `dotnet watch --project Workshop.WebApi\Workshop.WebApi.csproj`
@@ -35,15 +35,15 @@ Wir erzeugen uns einen eigenen API Controller mit API Operationen.
 
 1. Im Kontextmenü des `Controllers` Verzeichnis auf `Add` klicken und `New Item...` auswählen.
 
-    > ![](abschnitt-1/image/scaffold-controller-menu.png)
+    > ![Kontextmenü des Controllers Verzeichnis für die Controller Erstellung](abschnitt-1/image/scaffold-controller-menu.png)
 
 2. `API Controller - Emtpy` auswählen und einen Namen eingeben, muss im Format `<NAME>Controller.cs` angegeben werden. Danach mit `Add` erzeugen. In userem Beispiel nehmen wir `EchoController.cs`.
 
-    > ![](abschnitt-1/image/scaffold-controller-selector.png)
+    > ![Fenster zur Auswahl einer Controller Vorlage](abschnitt-1/image/scaffold-controller-selector.png)
 
 > Alternativ für Visual Studio Code eine Datei erzeugen und den folgenden Code manuell hinzufügen
 
-Die Datei / der API Controller sollte nun folgendermaßen aussehen: 
+Die Datei / der API Controller sollte nun folgendermaßen aussehen:
 
 ```c#
 // EchoController.cs
@@ -69,6 +69,7 @@ Nun fügen wir eine API Operation hinzu, welche eine Zeichenkette zurück gibt.
             return Ok("Hallo Welt");
         }
 ```
+
 `[HttpGet("simple")]` sagt dem Framework, dass die Operation bzw. die folgende Funktion auf die HTTP Methode GET hört und unter der Route `api/[controller]/simple`, welche zu `api/Echo/simple` wird, erreichbar ist.
 
 Der Rückgabetyp `ActionResult` in der Funktionssignatur ist für das HTTP Handling vorhanden. Bei der Rückgabe der Funktion wird die Funktion `Ok` (HTTP Status Code 200) mit dem `string` Parameterwert `Hallo Welt` übergeben.
@@ -106,7 +107,7 @@ Die Funktion BadRequest erzeugt ein Objekt des Types ActionResult, welches eine 
 
 Nun erstellen wir einen neuen API Controller mit API CRUD Operationen. Als kleines Beispiel wollen wir Personen als Resource handhaben. Daher nennen wir den API Controller `PersonsController.cs`. Des Weiteren nehmen wir uns eine Klasse als Data Transfer Object (DTO). Dafür erzeugen wir einen neues Verzeichnis `Models` und dort die Datei `Person.cs`. Um es einfach zu halten nehmen wir nur einen Identifier `id` und eine Werte Eigenschaft `name`.
 
-```c# 
+```c#
 // Person.cs
 namespace Workshop.WebApi.Models
 {
@@ -161,8 +162,8 @@ Bei der Create (Crud - POST) Operation überprüfen wir erstmal, ob nicht bereit
 ```c#
         [HttpPost]
         public ActionResult PostPerson([FromBody] Person person) {
-            if (store.ContainsKey(person.Id)) { 
-                ModelState.AddModelError(nameof(person.Id), "Resource with the id already exists"); 
+            if (store.ContainsKey(person.Id)) {
+                ModelState.AddModelError(nameof(person.Id), "Resource with the id already exists");
             }
             if (ModelState.IsValid) {
                 store.Add(person.Id, person);
