@@ -4,3 +4,7 @@
 **/publish
 **/node_modules
 **/.vs
+**/.venv
+**/__pycache__
+**/*.db
+**/.DS_STORE
