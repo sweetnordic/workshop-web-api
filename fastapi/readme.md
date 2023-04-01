@@ -3,10 +3,19 @@
 This Example with the FastAPI Framework and for data storage SQLAlchemy with a sqlite db.
 It uses pydantic to validate the incoming payload.
 
-FastAPI comes with Swagger UI and ReDoc.
+FastAPI comes with Swagger / OpenAPI UI and ReDoc.
 
 - Swagger: http://127.0.0.1:8000/docs
 - ReDoc: http://127.0.0.1:8000/redoc
+
+[OpenAPI Metadata](https://fastapi.tiangolo.com/tutorial/metadata/)
+
+FastAPI also supports
+
+- [GraphQL](https://fastapi.tiangolo.com/advanced/graphql/)
+- [WebSockets](https://fastapi.tiangolo.com/advanced/websockets/)
+- [Other SQL Databases](https://fastapi.tiangolo.com/tutorial/sql-databases/)
+- [Static Files](https://fastapi.tiangolo.com/tutorial/static-files/)
 
 ## Prerequirements
 
