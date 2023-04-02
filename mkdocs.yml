@@ -1,0 +1,15 @@
+site_name: API Workshop
+site_author: Sven Hempke
+site_description: Web API Workshop Webseite
+
+# nav:
+#   - Start: index.md
+
+repo_name: workshop-web-api
+repo_url: https://github.com/sweetnordic/workshop-web-api
+remote_name: origin
+remote_branch: main
+
+theme:
+  name: material
+  language: de
