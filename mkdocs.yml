@@ -1,0 +1,63 @@
+site_name: API Workshop
+site_author: Sven Hempke
+site_description: Web API Workshop Webseite
+
+nav:
+  - Grundlagen: index.md
+  - API Styles: api-styles.md
+  - API Guidelines: api-guidelines.md
+  - Backend Frameworks:
+      - backend/index.md
+      - ASP.NET: backend/aspdotnet.md
+      - FastAPI: backend/fastapi.md
+  - Frontend Frameworks:
+      - frontend/index.md
+      - Angular: frontend/angular.md
+      - Next.js: frontend/nextjs.md
+      - React: frontend/react.md
+      - Vue.js: frontend/vuejs.md
+
+repo_name: workshop-web-api
+repo_url: https://github.com/sweetnordic/workshop-web-api
+remote_name: origin
+remote_branch: main
+
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - navigation.path
+
+plugins:
+  - search
+  - markdownextradata:
+      data: data
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.extra
+  - markdown.extensions.attr_list
+  - markdown.extensions.md_in_html
+  - toc:
+      permalink: ⚓︎
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - mdx_include:
+      base_path: docs
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.keys
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format ""
