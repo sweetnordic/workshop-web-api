@@ -1,0 +1,2 @@
+# Enforce unix line ends
+* text=auto eol=lf
