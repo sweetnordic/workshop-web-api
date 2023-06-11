@@ -18,8 +18,8 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "Notes API",
-        Description = "An ASP.NET Core Web API for managing Notes",
+        Title = "Web API",
+        Description = "An ASP.NET Core Web API for managing Notes and Tasks",
     });
 });
 
