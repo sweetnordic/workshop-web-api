@@ -6,21 +6,21 @@ using Workshop.Notes.WebApi.Services;
 namespace Workshop.Notes.WebApi.Controllers;
 
 [ApiController, Produces(System.Net.Mime.MediaTypeNames.Application.Json)]
-[Route("notes")]
-public class NotesController : ControllerBase
+[Route("tasks")]
+public class TasksController : ControllerBase
 {
-    private readonly ILogger<NotesController> _logger;
-    private readonly IStore<Note> _store;
+    private readonly ILogger<TasksController> _logger;
+    private readonly IStore<Models.Task> _store;
 
-    public NotesController(IStore<Note> store, ILogger<NotesController> logger)
+    public TasksController(IStore<Models.Task> store, ILogger<TasksController> logger)
     {
         _store = store;
         _logger = logger;
     }
 
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseListDto<Note>))]
-    public async Task<ActionResult<BaseListDto<Note>>> List([FromQuery] int limit = 10, [FromQuery] int page = 1, [FromQuery] string search = "")
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseListDto<Models.Task>))]
+    public async Task<ActionResult<BaseListDto<Models.Task>>> List([FromQuery] int limit = 10, [FromQuery] int page = 1, [FromQuery] string search = "")
     {
         _logger.LogInformation("GetNotes({page}, {limit}, {search})", page, limit, search);
         var list = _store.List(search, limit, page);
@@ -28,19 +28,19 @@ public class NotesController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseItemDto<Note>))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseItemDto<Models.Task>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<BaseItemDto<Note>>> GetById([FromRoute] Guid id)
+    public async Task<ActionResult<BaseItemDto<Models.Task>>> GetById([FromRoute] Guid id)
     {
         _logger.LogInformation("GetNoteById({id})", id);
-        Note? item = _store.Get(id);
+        Models.Task? item = _store.Get(id);
         return null == item ? NotFound() : Ok(item.ToDto());
     }
 
     [HttpPost, Consumes(System.Net.Mime.MediaTypeNames.Application.Json)]
-    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(BaseItemDto<Note>))]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(BaseItemDto<Models.Task>))]
     [ProducesResponseType(typeof(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<BaseItemDto<Note>>> Post([FromBody] Note item)
+    public async Task<ActionResult<BaseItemDto<Models.Task>>> Post([FromBody] Models.Task item)
     {
         _logger.LogInformation("PostNote({item})", item);
         if (!ModelState.IsValid)
@@ -55,7 +55,7 @@ public class NotesController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] Note item)
+    public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] Models.Task item)
     {
         _logger.LogInformation("PutNote({item})", item);
 

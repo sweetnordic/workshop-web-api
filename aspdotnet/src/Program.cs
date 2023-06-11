@@ -3,13 +3,15 @@ using Workshop.Notes.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<INoteStore, InMemoryNoteStore>();
+builder.Services.AddSingleton<IStore<Workshop.Notes.WebApi.Models.Note>, InMemoryStore<Workshop.Notes.WebApi.Models.Note>>();
+builder.Services.AddSingleton<IStore<Workshop.Notes.WebApi.Models.Task>, InMemoryStore<Workshop.Notes.WebApi.Models.Task>>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
 });
 
+builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -23,10 +25,13 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+app.UseWelcomePage("/");
 
 app.UseAuthorization();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseHealthChecks("/health");
 
 app.MapControllers();
 
