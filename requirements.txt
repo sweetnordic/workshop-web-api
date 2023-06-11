@@ -2,3 +2,4 @@ mkdocs-drawio-exporter
 mkdocs-markdownextradata-plugin
 mkdocs-material
 mkdocs-material-extensions
+pymdown-extensions
