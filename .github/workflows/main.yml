@@ -3,22 +3,45 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "docs/**.md"
+      - "mkdocs.yml"
 
 jobs:
   build:
     name: Deploy docs
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
       - name: Checkout main
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
+      # - name: Deploy docs
+      #   uses: mhausenblas/mkdocs-deploy-gh-pages@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     CUSTOM_DOMAIN: optionaldomain.com
+      #     CONFIG_FILE: mkdocs.yml
+      #     EXTRA_PACKAGES: build-base
+      #     REQUIREMENTS: requirements.txt
+
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./site
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Deploy documentation
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_DOMAIN: optionaldomain.com
-          CONFIG_FILE: mkdocs.yml
-          EXTRA_PACKAGES: build-base
-          # GITHUB_DOMAIN: github.myenterprise.com
-          REQUIREMENTS: requirements.txt
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          mkdocs gh-deploy --force
+          mkdocs --version

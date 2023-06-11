@@ -1,5 +1,11 @@
 mkdocs-drawio-exporter
+mkdocs-git-committers-plugin-2
+mkdocs-git-revision-date-localized-plugin
 mkdocs-markdownextradata-plugin
 mkdocs-material
 mkdocs-material-extensions
+mkdocs-minify-plugin
+mkdocs-rss-plugin
+mkdocs-redirects
+pillow
 pymdown-extensions
