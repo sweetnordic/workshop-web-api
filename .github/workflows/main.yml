@@ -12,13 +12,15 @@ jobs:
     name: Deploy docs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-      - name: Checkout main
+      - name: Checkout main branch
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9
 
       # - name: Deploy docs
       #   uses: mhausenblas/mkdocs-deploy-gh-pages@master
