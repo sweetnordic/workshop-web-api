@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "visualstudioexptteam.vscodeintellicode",
+    "visualstudioexptteam.vscodeintellicode-completions"
+  ],
+  "unwantedRecommendations": []
+}
