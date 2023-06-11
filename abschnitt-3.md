@@ -1,12 +1,10 @@
-
-# ASP.NET Web API `C#` + Angular.js Web SPA `TypeScript`
+# FastAPI WebAPI `python`
 
 ## Projekt erstellen
 
-`dotnet new angular --name Workshop.WebApp --output Workshop.WebApp --language C# --framework net5.0`
+## Datenmodel erstellen
 
-https://angular.io/
-https://angular.io/cli
+## API Controller erstellen
 
 [Zurück zur Übersicht](README.md)
-[Weiter zu Abschnitt 3 - ASP.NET Core Web API mit Anuglar.js SPA](abschnitt-3.md)
+[Weiter zu Abschnitt 4 - ASP.NET Core Web API mit Anuglar.js SPA](abschnitt-4.md)

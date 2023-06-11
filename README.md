@@ -2,11 +2,12 @@
 
 Ein Workshop über Grundlagen für Web / HTTP APIs vom Code zum App Service, als extra gibt es noch einen Teil für eine Web API welche eine Angular SPA bedient.
 
-Drei Abschnitte:
+Vier Abschnitte:
 
 - Web API
   - [Web API mit ASP.NET Core](#asp-net-web-api-c)
   - [Web API mit Node.js und Nest.js](#nodejs-mit-nestjs-web-api-typescript)
+  - [Web API mit FastAPI](#web-api-mit-fastapi)
 - Web App
   - [Web App mit ASP.NET Core und Angular.js](#asp-net-web-api--angularjs-web-spa)
 
@@ -48,6 +49,10 @@ Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumen
 
 [Zur Abschnittsdokumentation](abschnitt-2.md)
 
-## ASP .NET Web API + Angular.js Web SPA
+## Web API mit FastAPI
 
 [Zur Abschnittsdokumentation](abschnitt-3.md)
+
+## ASP .NET Web API + Angular.js Web SPA
+
+[Zur Abschnittsdokumentation](abschnitt-4.md)
