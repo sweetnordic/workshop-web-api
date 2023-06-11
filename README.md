@@ -8,17 +8,10 @@ Vier Abschnitte:
   - [Web API mit ASP.NET Core](#asp-net-web-api-c)
   - [Web API mit Node.js und Nest.js](#nodejs-mit-nestjs-web-api-typescript)
   - [Web API mit FastAPI](#web-api-mit-fastapi)
-- Web App
+- Web API + App
   - [Web App mit ASP.NET Core und Angular.js](#asp-net-web-api--angularjs-web-spa)
 
-## Voraussetzungen
-
-- `choco install dotnet-5.0-sdk`
-- `choco install nodejs-lts`
-- `npm install -g @nestjs/cli`
-- `npm install -g @angular/cli`
-
-### Azure Infrastruktur
+## Azure Infrastruktur
 
 [![Deploy To Azure](https://raw.githubusercontent.com/sweetnordic/workshop-web-api/main/.azure/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fsweetnordic%2Fworkshop-web-api%2Fmain%2F.azure%2Fazuredeploy.json)
 [![Visualize](https://raw.githubusercontent.com/sweetnordic/workshop-web-api/main/.azure/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fsweetnordic%2Fworkshop-web-api%2Fmain%2F.azure%2Fazuredeploy.json)
@@ -41,7 +34,7 @@ Weitere Informationen zu RESTful APIs:
 
 Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumentieren anhand der [OpenAPI Specification](https://swagger.io/specification/). Dies ist eine spezielle Form geschrieben in JSON oder YAML und kann unter anderem von [Swagger](https://swagger.io/) weiter verwendet werden.
 
-## ASP .NET Web API `C#`
+## ASP.NET Core Web API `C#`
 
 [Zur Abschnittsdokumentation](abschnitt-1.md)
 
@@ -49,10 +42,10 @@ Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumen
 
 [Zur Abschnittsdokumentation](abschnitt-2.md)
 
-## Web API mit FastAPI
+## FastAPI Web API `python`
 
 [Zur Abschnittsdokumentation](abschnitt-3.md)
 
-## ASP .NET Web API + Angular.js Web SPA
+## ASP.NET Core Web API + Angular.js Web SPA
 
 [Zur Abschnittsdokumentation](abschnitt-4.md)

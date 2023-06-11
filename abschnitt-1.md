@@ -1,7 +1,6 @@
+# ASP.NET Core Web API `C#`
 
-# ASP.NET Web API `C#`
-
-In diesem Abschnitt geht es um das ASP.NET Framework welches auf .NET 5 setzt und mit C# entwickelt wird.
+In diesem Abschnitt geht es um eine Web API mit [ASP.NET Core](https://learn.microsoft.com/de-de/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0) welches auf .NET 7 setzt in C# entwickelt wird.
 
 .NET bietet die Möglichkeit Vorlagen zu nutzen um neue Projekte zu erstellen.
 Es gibt Community und Microsoft Vorlagen, für dieses Projekt nutzen wir die Microsoft Vorlage `webapi`.
@@ -15,13 +14,20 @@ Themen sichtbar in der Vorlage:
 - OpenApi Specification (Swagger)
 - Logging
 
-## Projekt erstellen
+## Voraussetzungen
+
+- `choco install dotnet-5.0-sdk`
+- `choco install dotnet-7.0-sdk`
+
+## Projektstruktur erstellen
 
 `dotnet new webapi --name Workshop.WebApi --output Workshop.WebApi --language C# --framework net5.0`
 
 [Weitere Informationen zu .NET Vorlagen](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new-sdk-templates)
 
-Projekt local starten mit watch
+## Projekt starten
+
+Projekt lokal starten mit watch
 `dotnet watch --project Workshop.WebApi\Workshop.WebApi.csproj`
 
 Während des Debuggens kann man auf den Playground zugreifen und die API ausprobieren.
@@ -35,11 +41,11 @@ Wir erzeugen uns einen eigenen API Controller mit API Operationen.
 
 1. Im Kontextmenü des `Controllers` Verzeichnis auf `Add` klicken und `New Item...` auswählen.
 
-    > ![Kontextmenü des Controllers Verzeichnis für die Controller Erstellung](abschnitt-1/image/scaffold-controller-menu.png)
+   > ![Kontextmenü des Controllers Verzeichnis für die Controller Erstellung](abschnitt-1/image/scaffold-controller-menu.png)
 
 2. `API Controller - Emtpy` auswählen und einen Namen eingeben, muss im Format `<NAME>Controller.cs` angegeben werden. Danach mit `Add` erzeugen. In userem Beispiel nehmen wir `EchoController.cs`.
 
-    > ![Fenster zur Auswahl einer Controller Vorlage](abschnitt-1/image/scaffold-controller-selector.png)
+   > ![Fenster zur Auswahl einer Controller Vorlage](abschnitt-1/image/scaffold-controller-selector.png)
 
 > Alternativ für Visual Studio Code eine Datei erzeugen und den folgenden Code manuell hinzufügen
 

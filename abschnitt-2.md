@@ -1,11 +1,19 @@
-
 # Node.js mit Nest.js Web API `TypeScript`
 
-## Projekt erstellen
+In diesem Abschnitt geht es um eine Web API mit [Nest.js](https://nestjs.com) in TypeScript.
+
+## Voraussetzungen
+
+- `choco install nodejs-lts`
+- `npm install -g @nestjs/cli`
+
+## Projektstruktur erstellen
 
 `nest new WorkshopNodeApi --skip-git --package-manager npm --language TS`
 
-Project local starten mit watch
+## Projekt starten
+
+Projekt lokal starten mit watch-Funktionalität:
 `npm run start:dev`
 
 ## API Controller erstellen
@@ -16,9 +24,9 @@ Dadurch wird ein neue API Controller ezeugt und in der `app.modules.ts` verknüp
 
 ```typescript
 // src/echo/echo.controller.ts
-import { Controller } from '@nestjs/common';
+import { Controller } from "@nestjs/common";
 
-@Controller('echo')
+@Controller("echo")
 export class EchoController {}
 ```
 
@@ -26,9 +34,9 @@ In der erstellten `src/echo/echo.controller.ts` ändern wir den pfad von `/echo`
 
 ```typescript
 // src/echo/echo.controller.ts
-import { Controller } from '@nestjs/common';
+import { Controller } from "@nestjs/common";
 
-@Controller('/api/echo')
+@Controller("/api/echo")
 export class EchoController {}
 ```
 
@@ -73,8 +81,8 @@ Anfangen tun wir mit dem DTO bzw. der Klasse Person.
 ```typescript
 // src/person.ts
 export class Person {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 }
 ```
 
@@ -84,7 +92,7 @@ Nun wollen wir einen Speicher erzeugen um die Personen während der Laufzeit zu 
 
 ```typescript
 // src/persons/persons.service.ts
-import { Injectable, Scope } from '@nestjs/common';
+import { Injectable, Scope } from "@nestjs/common";
 
 @Injectable()
 export class PersonsService {}
@@ -97,22 +105,34 @@ Services in NEST werden durch Dependency Injection in die Controller gebracht, d
 Wir bleiben erstmal bei dem Konzept des Key-Value Pairs.
 
 ```typescript
-import { Injectable, Scope } from '@nestjs/common';
-import { Person } from '../person';
+import { Injectable, Scope } from "@nestjs/common";
+import { Person } from "../person";
 
 @Injectable({ scope: Scope.DEFAULT })
 export class PersonsService {
-    private store: Map<number, Person> = new Map([
-        [ 1, { id: 1, name: 'Peter Peterson' } ],
-        [ 2, { id: 2, name: 'Klaus Klausens' } ],
-        [ 3, { id: 3, name: 'Singa Singable' } ],
-    ]);
-    list(): Person[] { return Array.from(this.store.values()); }
-    get(id: number): Person { return this.store.get(id); }
-    exists(id: number): boolean { return this.store.has(id); }
-    delete(id: number): boolean { return this.store.delete(id); }
-    create(person: Person): void { this.store.set(person.id, person); }
-    update(id: number, person: Person): void { this.store.set(id, person); }
+  private store: Map<number, Person> = new Map([
+    [1, { id: 1, name: "Peter Peterson" }],
+    [2, { id: 2, name: "Klaus Klausens" }],
+    [3, { id: 3, name: "Singa Singable" }],
+  ]);
+  list(): Person[] {
+    return Array.from(this.store.values());
+  }
+  get(id: number): Person {
+    return this.store.get(id);
+  }
+  exists(id: number): boolean {
+    return this.store.has(id);
+  }
+  delete(id: number): boolean {
+    return this.store.delete(id);
+  }
+  create(person: Person): void {
+    this.store.set(person.id, person);
+  }
+  update(id: number, person: Person): void {
+    this.store.set(id, person);
+  }
 }
 ```
 
@@ -121,9 +141,9 @@ Auch für den Controller gibt es bei Nest.js CLI ein Befehl zum erzeugen.
 Der Controller bekommt eine Route und einen Konstruktor, welcher den Service erwartet.
 
 ```typescript
-@Controller('/api/persons')
+@Controller("/api/persons")
 export class PersonsController {
-    constructor(private readonly service: PersonsService) {}
+  constructor(private readonly service: PersonsService) {}
 }
 ```
 
