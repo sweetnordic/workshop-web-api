@@ -9,4 +9,4 @@ mkdocs-minify-plugin
 mkdocs-rss-plugin
 mkdocs-redirects
 pillow
-pymdown-extensions==3.3.7
+pymdown-extensions==9.10
