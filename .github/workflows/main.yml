@@ -22,14 +22,17 @@ jobs:
         with:
           python-version: 3.9
 
-      # - name: Deploy docs
-      #   uses: mhausenblas/mkdocs-deploy-gh-pages@master
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     CUSTOM_DOMAIN: optionaldomain.com
-      #     CONFIG_FILE: mkdocs.yml
-      #     EXTRA_PACKAGES: build-base
-      #     REQUIREMENTS: requirements.txt
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CONFIG_FILE: mkdocs.yml
+          EXTRA_PACKAGES: build-base
+          REQUIREMENTS: requirements.txt
 
       # - name: Deploy
       #   uses: peaceiris/actions-gh-pages@v3
@@ -37,13 +40,9 @@ jobs:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
       #     publish_dir: ./site
 
-      - name: Install Python dependencies
-        run: |
-          pip install -r requirements.txt
-
-      - name: Deploy documentation
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          mkdocs gh-deploy --force
-          mkdocs --version
+      # - name: Deploy documentation
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #   run: |
+      #     mkdocs gh-deploy --force
+      #     mkdocs --version
