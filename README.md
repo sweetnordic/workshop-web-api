@@ -34,18 +34,34 @@ Weitere Informationen zu RESTful APIs:
 
 Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumentieren anhand der [OpenAPI Specification](https://swagger.io/specification/). Dies ist eine spezielle Form geschrieben in JSON oder YAML und kann unter anderem von [Swagger](https://swagger.io/) weiter verwendet werden.
 
-## ASP.NET Core Web API `C#`
+## Web Api Implementierung
+
+### ASP.NET Core Web API `C#`
 
 [Zur Abschnittsdokumentation](abschnitt-1.md)
 
-## Node.js mit Nest.js Web API `TypeScript`
+### Node.js mit Nest.js Web API `TypeScript`
 
 [Zur Abschnittsdokumentation](abschnitt-2.md)
 
-## FastAPI Web API `python`
+### FastAPI Web API `python`
 
 [Zur Abschnittsdokumentation](abschnitt-3.md)
 
-## ASP.NET Core Web API + Angular.js Web SPA
+### ASP.NET Core Web API + Angular.js Web SPA
 
 [Zur Abschnittsdokumentation](abschnitt-4.md)
+
+### Flask Web API `python`
+
+[Zur Abschnittsdokumentation](abschnitt-5.md)
+
+### Vergleich
+
+| Feature             | aspdotnet        | typescript | python + flask    | python + fastapi |
+| ------------------- | ---------------- | ---------- | ----------------- | ---------------- |
+| Web Server          | kestrel or iis   | express.js | Flask or gunicorn | uvicorn          |
+| Web Framework       | asp.net          | nestjs     | Flask             | fastapi          |
+| Datenbank Framework | entity framework | ---        | sqlalchemy        | sqlalchemy       |
+| REST behavoir       | asp.net          | ---        | flask-smorest     | fastapi          |
+| Model Validation    | asp.net          | ---        | ---               | pydantic         |
