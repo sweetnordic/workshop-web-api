@@ -317,9 +317,54 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Flask
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Flask
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    Voraussetzungen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projektstruktur-erstellen" class="md-nav__link">
+    Projektstruktur erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projekt-starten" class="md-nav__link">
+    Projekt starten
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -580,6 +625,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    Voraussetzungen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projektstruktur-erstellen" class="md-nav__link">
+    Projektstruktur erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projekt-starten" class="md-nav__link">
+    Projekt starten
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -597,6 +671,32 @@
 
 
 <h1 id="flask-web-api-python">Flask Web Api <code>python</code><a class="headerlink" href="#flask-web-api-python" title="Permanent link">⚓︎</a></h1>
+<p>In diesem Abschnitt geht es um eine Web API mit Flask in python.</p>
+<h2 id="voraussetzungen">Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permanent link">⚓︎</a></h2>
+<p>Neue virtuelle Umgebung aufbauen.
+<code>python3 -m venv .venv</code></p>
+<p>Neue Umgebung aktivieren
+<code>.venv/bin/activate</code></p>
+<p>Notwendige Pakete installieren</p>
+<ul>
+<li><code>pip install Flask</code></li>
+</ul>
+<h2 id="projektstruktur-erstellen">Projektstruktur erstellen<a class="headerlink" href="#projektstruktur-erstellen" title="Permanent link">⚓︎</a></h2>
+<p>Unterordner manuell erstellen für den Code beispielsweise <code>app</code> oder <code>src</code>.</p>
+<p>Dort die <code>main.py</code> Datei erzeugen.
+In der Datei tragen wir nun ein erste, kleine Anwendung ein.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, World!&quot;</span>
+</code></pre></div>
+<p>Es wird eine neue Flask Anwendung erzeugt und eine Funktion bekommt über die get Attributsfunktion die Ausführbarkeit bzw. einen Endpunkt.</p>
+<h2 id="projekt-starten">Projekt starten<a class="headerlink" href="#projekt-starten" title="Permanent link">⚓︎</a></h2>
+<p>Im Terminal starten wir per uvicorn die Anwendung.
+Falls anstelle von <code>app</code> der Ordnername <code>src</code> gewählt wurde, muss der Befehlt dementsprechend angepasst werden.</p>
+<p><code>flask --app main run</code></p>
 
 
 
