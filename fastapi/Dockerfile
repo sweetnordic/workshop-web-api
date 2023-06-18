@@ -1,6 +1,7 @@
 FROM python:3.10
+
 WORKDIR /code
-COPY ./requirements.txt requirements.txt
+COPY requirements.txt .
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt && pip install --no-cache-dir gunicorn
 
