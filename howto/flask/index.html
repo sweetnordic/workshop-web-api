@@ -362,6 +362,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#datenmodel-erstellen" class="md-nav__link">
+    Datenmodel erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -652,6 +666,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#datenmodel-erstellen" class="md-nav__link">
+    Datenmodel erstellen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -696,7 +724,52 @@ In der Datei tragen wir nun ein erste, kleine Anwendung ein.</p>
 <h2 id="projekt-starten">Projekt starten<a class="headerlink" href="#projekt-starten" title="Permanent link">⚓︎</a></h2>
 <p>Im Terminal starten wir per uvicorn die Anwendung.
 Falls anstelle von <code>app</code> der Ordnername <code>src</code> gewählt wurde, muss der Befehlt dementsprechend angepasst werden.</p>
-<p><code>flask --app main run</code></p>
+<p><code>flask --debug --app main run</code></p>
+<h2 id="datenmodel-erstellen">Datenmodel erstellen<a class="headerlink" href="#datenmodel-erstellen" title="Permanent link">⚓︎</a></h2>
+<p>Neuen Ordner <code>models</code> erstellen, dort die Datei <code>__init__.py</code> erstellen.</p>
+<p>Als nächstes erstellen wir eine Klasse als Poco und eine Klass als Schema für das Datenmodel der Notizen.</p>
+<p>Neue Datei <code>note.py</code> erstellen und mit folgenden Inhalt füllen.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">fields</span>
+
+<span class="k">class</span> <span class="nc">Note</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">published</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">category</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">published</span> <span class="o">=</span> <span class="n">published</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">created_at</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">updated_at</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;Note(name=</span><span class="si">{self.title!r}</span><span class="s1">)&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">NoteSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Str</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Str</span><span class="p">(</span><span class="n">allow_none</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Str</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;Common&#39;</span><span class="p">,</span> <span class="n">allow_none</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">published</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Boolean</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Date</span><span class="p">()</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Date</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">⚓︎</a></h2>
+<p>Datei <code>Dockerfile</code> erstellen und mit folgenden Inhalt füllen.</p>
+<blockquote>
+<p>Dieses Image startet dann den flask Development Server.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.10-alpine</span>
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/code</span>
+<span class="k">COPY</span><span class="w"> </span>requirements.txt<span class="w"> </span>.
+
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--upgrade<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="k">COPY</span><span class="w"> </span>app<span class="w"> </span>app
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;flask&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app.main&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w">  </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;5000&quot;</span><span class="w"> </span><span class="p">]</span>
+
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">5000</span>
+</code></pre></div>
 
 
 
