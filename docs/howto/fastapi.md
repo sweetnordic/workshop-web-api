@@ -32,7 +32,7 @@ async def root():
  return { "greeting": "Hello world" }
 ```
 
-Es wird eine neue FastAPI erzeugt und eine Funktion bekommt über die get Attributsfunktion die Ausführbarkeit bzw. einen Endpunkt.
+Es wird eine neue FastAPI Anwendung erzeugt und eine Funktion bekommt über die get Attributsfunktion die Ausführbarkeit bzw. einen Endpunkt.
 
 ## Projekt starten
 

@@ -38,23 +38,23 @@ Um eine API verständlicher zu machen, gibt es die Möglichkeit diese zu dokumen
 
 ### ASP.NET Core Web API `C#`
 
-[Zur Abschnittsdokumentation](abschnitt-1.md)
+[Zur Abschnittsdokumentation](docs/howto/aspdotnet.md)
 
 ### Node.js mit Nest.js Web API `TypeScript`
 
-[Zur Abschnittsdokumentation](abschnitt-2.md)
+[Zur Abschnittsdokumentation](docs/howto/nestjs.md)
 
 ### FastAPI Web API `python`
 
-[Zur Abschnittsdokumentation](abschnitt-3.md)
-
-### ASP.NET Core Web API + Angular.js Web SPA
-
-[Zur Abschnittsdokumentation](abschnitt-4.md)
+[Zur Abschnittsdokumentation](docs/howto/fastapi.md)
 
 ### Flask Web API `python`
 
-[Zur Abschnittsdokumentation](abschnitt-5.md)
+[Zur Abschnittsdokumentation](docs/howto/flask.md)
+
+### ASP.NET Core Web API + Angular.js Web SPA
+
+[Zur Abschnittsdokumentation](docs/howto/angular.md)
 
 ### Vergleich
 
